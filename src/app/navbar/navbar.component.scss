@@ -1,0 +1,40 @@
+.profile-header-container{
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+
+.profile-header-img > img.img-circle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #51D2B7;
+}
+
+.profile-header {
+  margin-top: 0px;
+}
+.Animation {
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration:10s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration:10s;
+  animation-iteration-count: infinite;
+
+}
+@-webkit-keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+@keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+
+.colorNav{
+  background-color:  #F4F4F4;
+}

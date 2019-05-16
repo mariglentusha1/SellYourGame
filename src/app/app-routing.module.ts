@@ -1,17 +1,15 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {RegisterComponent} from './Authentication/register';
-import {LoginComponent} from './Authentication/login';
-import {HomeComponent} from './home';
+import {NavbarComponent} from './navbar/navbar.component';
+
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  {
+    path: '',
+    component: NavbarComponent,
+  },
+  {path: 'users', loadChildren: './users/users.module#UsersModule'}
 ];
 
 @NgModule({
@@ -21,5 +19,6 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
+
 export const routing = RouterModule.forRoot(routes);
 

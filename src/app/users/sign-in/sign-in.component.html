@@ -1,0 +1,42 @@
+<div class="mTop user-login border col-4 offset-4">
+  <div class="header-widget">
+  <div class="text-container">
+    <h4>Log in to SellYourGame account</h4>
+
+  </div>
+  </div>
+    <div class="container">
+
+  <form>
+
+    <div class="form-group">
+      <label class="text-muted">Email</label>
+      <input type="email" class="form-control" #userEmail  autofocus="" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label class="text-muted">Password</label>
+      <input type="password" class="form-control" #userPassword  placeholder="Password">
+    </div>
+    <div class="form-group">
+      <input type="button" class="btn-primary loginButton" value="Log in" (click)="authService.SignIn(userEmail.value,userPassword.value)">
+    </div>
+    <div class="form-group">
+      <span class="or"><span class="orInner">Or</span></span>
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+        Log in with Google
+      </button>
+    </div>
+    <div class="forgotPassword">
+      <span routerLink="/users/forgot-password">Forgot Password?</span>
+    </div>
+
+    <div class="redirectToLogin">
+      <span>Don't have an account?<span class="redirect" routerLink="/users/register-user"> Sign Up</span></span>
+    </div>
+  </form>
+</div>
+</div>
+
+
