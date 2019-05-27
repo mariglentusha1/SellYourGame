@@ -1,15 +1,16 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {NavbarComponent} from './navbar/navbar.component';
+import {HomeComponent} from './home/home.component';
 
 
 
 const routes: Routes = [
   {
     path: '',
-    component: NavbarComponent,
+    component: HomeComponent, pathMatch: 'full'
   },
-  {path: 'users', loadChildren: './users/users.module#UsersModule'}
+  {path: 'users', loadChildren: './users/users.module#UsersModule'},
+  {path: 'product', loadChildren: './product/product.module#ProductModule'}
 ];
 
 @NgModule({
@@ -20,5 +21,4 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routing = RouterModule.forRoot(routes);
 

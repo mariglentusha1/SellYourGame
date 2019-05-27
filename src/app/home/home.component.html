@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row mTop">
+    <div class="col-lg-3 d-flex align-items-stretch mb-3" *ngFor="let game of (game$ | async)">
+      <div class="card text-center">
+        <div class="card-body">
+         <img src="{{game.image}}" class="img-fluid">
+          <div class="card-title">
+            <button class="btn-success" (click)="getNavigation('product/details', game.title)">{{game.title}}</button>
+          </div>
+          <div class="card-text">
+        Price: {{game.price}}$
+          </div>
+          <div class="card-link">
+
+            <span><a routerLink="">ADD TO CART</a></span>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+

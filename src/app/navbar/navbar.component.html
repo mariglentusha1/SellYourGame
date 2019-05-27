@@ -9,10 +9,10 @@
                                            alt="">SYG</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Games</a>
+        <a class="nav-link" routerLink="users/dashboard">Dashboard</a>
       </li>
 
     </ul>
@@ -29,7 +29,7 @@
                alt="{{user.displayName}}">
         </div>
       </div>
-      <button (click)="authService.SignOut()" class="btn btn-outline-secondary my-2 my-sm-0 " type="submit">Sign Out</button>
+      <button (click)="authService.signOut()" class="btn btn-outline-secondary my-2 my-sm-0 " type="submit">Sign Out</button>
 
     </div>
     <div *ngIf="!authService.isLoggedIn" class="btn-toolbar offset-1">
