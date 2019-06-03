@@ -9,7 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -20,6 +20,12 @@ import {environment} from '../environments/environment';
 import {AuthService} from './shared/services/auth.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import {GamesService} from './shared/services/games.service';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {ProductModule} from './product/product.module';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+
 
 
 @NgModule({
@@ -38,13 +44,17 @@ import { HomeComponent } from './home/home.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    ProductModule,
+    ScrollingModule
 
 
   ],
   providers: [
 
     AuthService,
+    GamesService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,21 @@
+<div class="mTop" >
+
+  <div class="container">
+<div class="form-group">
+  <button  type="button" class="btn btn-primary" routerLink="./new">Create New Game</button>
+</div>
+    <div class="text-center text-danger"><h3>My Games</h3></div>
+    <div *ngFor="let game of gameService.game$ | async">
+      <div *ngIf="game.user===authService.getCurrentUser()">
+
+  <div class="list-group">
+      <h1><img src="{{game.gameCoverImage}}">{{game.gameTitle | uppercase}}
+        <button type="button" class="btn-primary" (click)="gameService.getNavigation('product/details',game.gameTitle)">View</button>
+        <button type="button" class="btn btn-danger" (click)="gameService.deleteGame(game)">Delete</button>
+      </h1>
+  </div>
+
+</div>
+    </div>
+  </div>
+</div>

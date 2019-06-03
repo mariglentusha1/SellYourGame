@@ -10,14 +10,14 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardComponent} from './dashboard/dashboard/dashboard.component';
 import {SignInComponent} from './sign-in/sign-in.component';
 
 import {RouterModule} from '@angular/router';
 
 
 @NgModule({
-  declarations: [DashboardComponent, SignUpComponent, ForgotPasswordComponent, VerifyEmailComponent, SignInComponent],
+  declarations: [SignUpComponent, ForgotPasswordComponent, VerifyEmailComponent, SignInComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
