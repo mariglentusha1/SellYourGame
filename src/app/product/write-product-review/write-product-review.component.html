@@ -1,0 +1,20 @@
+<form class="offset-1" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="!authService.isLoggedIn;else elseComment">
+    <span>Sign in to comment</span><br>
+    <button class="btn btn-success" routerLink="/users/sign-in" >
+      Sign In
+    </button>
+  </div>
+  <ng-template #elseComment>
+            <textarea formControlName="comment" id="exampleFormControlTextarea3" class="col-3">
+      </textarea><br>
+
+
+    <button type="button" (click)="comment(commentForm.value)" class="btn-primary">Comment</button>
+  </ng-template>
+</form>
+<h1 class="offset-1">Comments:</h1>
+<div *ngFor="let comments of commentData">
+
+  <p class="offset-1">{{comments['userName']}}: {{comments['comment']}}</p>
+</div>

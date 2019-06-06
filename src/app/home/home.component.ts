@@ -11,8 +11,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private gameService: GamesService) {
   }
-
   ngOnInit() {
     this.gameService.game$ = this.gameService.getAllGames();
   }
+
 }

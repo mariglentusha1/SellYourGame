@@ -10,8 +10,9 @@
 
   <div class="list-group">
       <h1><img src="{{game.gameCoverImage}}">{{game.gameTitle | uppercase}}
-        <button type="button" class="btn-primary" (click)="gameService.getNavigation('product/details',game.gameTitle)">View</button>
-        <button type="button" class="btn btn-danger" (click)="gameService.deleteGame(game)">Delete</button>
+        <button type="button" class="btn btn-primary" (click)="gameService.getNavigation('product/details',game.gameTitle)">View</button>
+        <button type="button" class="btn btn-danger" (click)="deleteGame(game.$gameId)">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="gameService.editGame(game.$gameId)">Update</button>
       </h1>
   </div>
 

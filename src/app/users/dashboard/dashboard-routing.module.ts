@@ -7,7 +7,8 @@ const routes: Routes = [
   {
     path: '', component: DashboardComponent,
   },
-  {path: 'new', component: CreateNewGameComponent}
+  {path: 'new', component: CreateNewGameComponent},
+  {path: 'edit/:id', component: CreateNewGameComponent}
 ];
 
 @NgModule({

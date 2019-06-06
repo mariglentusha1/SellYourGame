@@ -5,7 +5,6 @@ import {GamesService} from '../../../shared/services/games.service';
 import {AuthService} from '../../../shared/services/auth.service';
 import {Game} from '../../../shared/Models/game';
 
-
 @Component({
   selector: 'app-create-new-game',
   templateUrl: './create-new-game.component.html',
@@ -16,8 +15,7 @@ import {Game} from '../../../shared/Models/game';
 export class CreateNewGameComponent implements OnInit {
 
   gameForm: FormGroup;
-  game: Game;
-
+hidden: boolean = true;
   constructor(public authService: AuthService, private db: AngularFirestore,
               private gameService: GamesService, public fb: FormBuilder) {
   }
@@ -38,7 +36,6 @@ export class CreateNewGameComponent implements OnInit {
     })
     ;
   }
-
   onSubmit() {
   }
 

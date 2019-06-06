@@ -1,0 +1,41 @@
+
+/*****************globals*************/
+body {
+  font-family: 'open sans';
+  overflow-x: hidden; }
+
+img {
+  max-width: 100%;
+width: 550px;
+  height: 220px;
+}
+
+.comment {
+  width: 40%;
+  height: 100px;
+  padding: 10px;
+  background-color: #d0e2bc;
+  font: 1.4em/1.6em cursive;
+  color: #095484;
+}
+
+@media screen and (min-width: 997px) {
+  .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; } }
+
+
+.download, .like {
+  background: #ff9f1a;
+  padding: 1.2em 1.5em;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease; }
+.download:hover, .like:hover {
+  background: #b36800;
+  color: #fff; }

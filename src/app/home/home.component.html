@@ -1,6 +1,5 @@
 
 
-
 <div class="container mTop backGround">
   <div class="row">
     <div class="col-lg-3 d-flex align-items-stretch mb-3" *ngFor="let game of (gameService.game$ | async); let i=index;">
@@ -10,16 +9,15 @@
           <div class="card-title">
             <h4>{{game.gameTitle}}</h4>
           </div>
-          <button class="btn-success" (click)="gameService.getNavigation('product/details', game.$gameId)">See Game</button><br>
+          <button class="btn-success" (click)="gameService.getNavigation('product/details', game.gameTitle)">See Game</button><br>
           <div class="card-text">
         Price: {{game.gamePrice}}$
           </div>
         </div>
       </div>
     </div>
-    <div>
-      <button (click)="gameService.getGameId()">GI</button>
-    </div>
   </div>
 </div>
+
+
 

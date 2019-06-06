@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="container ">
-    <form [formGroup]="gameForm"  (ngSubmit)="onSubmit()">
+    <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <h5>Title</h5>
         <input type="text" #gameTitle formControlName="gameTitle" class="form-control" autofocus="" required>
@@ -53,13 +53,20 @@
       </div>
       <div class="form-group">
         <label>Upload</label><br>
+
         <input type="file" style="display: none" #file accept="application/zip" formControlName="gameFileUpload" (change)="gameService.uploadGame($event)">
-        <button type="button" (click)="file.click()" class="btn-primary"
-                [disabled]="!(gameForm.get('gameTitle').valid && gameForm.get('gameDetails').valid && gameForm.get('gamePrice').valid)">Upload</button>
-      </div>
-      <div class="form-group">
-        <label>Upload</label><br>
+        <button type="button" (click)="file.click()"  class="btn-primary">Upload</button><br>
+       <div>
+         <label>Progress</label><br>
+        <progress max="100" [value]="(gameService.uploadProgress | async)"></progress>
+        <section class="control-bar">
+          <button class="btn-outline-secondary" (click)="gameService.task.pause()">Pause</button><span></span>
+          <button class="btn-success" (click)="gameService.task.resume()">Resume</button><span></span>
+          <button class="btn-danger" (click)="gameService.task.cancel()">Cancel</button>
+        </section></div>
+        <div class="mt-2">
         <button type="button" (click)="onSubmit1(gameForm.value)" routerLink="" [disabled]="!gameForm.valid" class="btn-primary">Save</button>
+      </div>
       </div>
     </form>
   </div>

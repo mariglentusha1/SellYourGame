@@ -18,13 +18,13 @@
       <input type="password" class="form-control" #userPassword  placeholder="Password">
     </div>
     <div class="form-group">
-      <input type="button" class="btn-primary loginButton" value="Log in" (click)="authService.SignIn(userEmail.value,userPassword.value)">
+      <input type="button" class="btn-primary loginButton" value="Log in" (click)="authService.signIn(userEmail.value,userPassword.value)">
     </div>
     <div class="form-group">
       <span class="or"><span class="orInner">Or</span></span>
     </div>
     <div class="form-group">
-      <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+      <button type="button" class="btn googleBtn" (click)="authService.googleAuth()">
         Log in with Google
       </button>
     </div>
