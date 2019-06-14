@@ -25,6 +25,15 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {ProductModule} from './product/product.module';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {GameStateModule} from './shared/store/game-state.module';
+import {MatPaginatorModule} from '@angular/material';
+import {FooterComponent} from './home/footer/footer.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {NgAisModule} from 'angular-instantsearch';
+import {StoreModule} from '@ngrx/store';
+import {gameReducers} from './shared/store/reducers';
+import { SearchComponent } from './navbar/search/search.component';
 
 
 
@@ -33,6 +42,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    FooterComponent,
+    SearchComponent
   ],
 
   imports: [
@@ -47,7 +58,12 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     ProductModule,
-    ScrollingModule
+    ScrollingModule,
+    StoreDevtoolsModule.instrument(),
+    GameStateModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
+    NgAisModule.forRoot(),
 
 
   ],

@@ -1,5 +1,5 @@
 export interface Game {
-  $gameId?: string;
+  gameId?: string;
   user?: string;
   gameTitle?: string;
   gameCategory?: string;
@@ -8,4 +8,5 @@ export interface Game {
   gameCoverImage?: string;
   createdAt?: Date;
   gameFile?: string;
+  video?: string;
 }

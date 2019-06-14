@@ -1,5 +1,5 @@
 import {Injectable, NgZone} from '@angular/core';
-import {User} from '../Models/user';
+import {User} from '../models/user';
 import {auth} from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
@@ -122,6 +122,10 @@ export class AuthService {
   getUserName(){
     const user = JSON.parse(localStorage.getItem('user'));
     return user.displayName;
+  }
+  getProfilePhoto(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.photoURL;
   }
 }
 

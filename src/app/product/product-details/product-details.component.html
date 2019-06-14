@@ -1,12 +1,12 @@
-<div class="container mTop">
-  <div class="card mb-4">
+<div class="container mt-5">
+  <div class="card mb-4 mTop">
     <div *ngFor="let game of gameData">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row color">
           <div class="col-md-5">
             <div class="row offset-1">
               <div class="gameTitle tab-content mt-4">
-                <h1 class="text-dark mb-4"> {{game['gameTitle']}}</h1>
+                <h1 class="text-dark mb-4"> {{game['gameTitle'] | uppercase}}</h1>
                 <div class="tab-content mb-4">
                   <p>{{game['gameDetails']}}</p>
                 </div>
@@ -17,11 +17,14 @@
             <div class="row offset-4">
               <div class="tab-content border border-dark mt-4 mb-4">
                 <img src="{{game['gameCoverImage']}}">
-
+              </div>
+              <div class="tab-content  mt-4 mb-4">
+                <video width="300" controls>
+                  <source src="{{game['video']}}" type="video/mp4">
+                </video>
               </div>
               <div class="gamePrice mb-4 offset-2">
-                <h4 class="price mb 1">current price: <span>{{game['gamePrice']}}$</span></h4>
-
+                <h4 class="price mb 1">Price: <span>{{game['gamePrice']}}$</span></h4>
                 <div class="action" *ngIf="game['gamePrice'] === 0;else elseBlock;">
                   <button class="download btn btn-default" [hidden]="!authService.isLoggedIn" type="button"><a
                     href="{{game['gameFile']}}">Download</a></button>
@@ -33,17 +36,17 @@
                 </div>
                 <ng-template #elseBlock>
                   <div class="action">
-                    <button class="download btn btn-default" type="button"><a href="{{game['gameFile']}}">Buy</a>
+                    <button class="download btn btn-default" type="button"><a>Buy</a>
                     </button>
                   </div>
                 </ng-template>
               </div>
+
             </div>
           </div>
         </div>
-
       </div>
-      <app-write-product-review [comments]="gameId"></app-write-product-review>
+      <app-write-product-review></app-write-product-review>
     </div>
   </div>
 </div>

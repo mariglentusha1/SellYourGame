@@ -1,8 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
-.mTop{
+
+.mTop {
   margin-top: 75px;
 }
 
-html, body { height: 100%;background-color: #F0EAD6 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  //background-image: url("./assets/images/background-gaming-7.jpg");
+background-color: #f0eceb  ;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

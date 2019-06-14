@@ -1,0 +1,89 @@
+
+<div class="mTop col-6 offset-3 newProject mb-3" *ngFor="let game of gameData">
+  <div class="header-widget">
+    <div class="text-container" >
+      <h4>Edit {{game['gameTitle']}}</h4>
+
+    </div>
+  </div>
+  <div class="container ">
+    <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <h5>Title</h5>
+        <input type="text" #gameTitle formControlName="gameTitle" class="form-control" value="{{gameData['gameTitle']}}" autofocus="" required>
+        <span class="form-text text-muted" *ngIf="!gameForm.get('gameTitle').valid && gameForm.get('gameTitle').touched">Title is required</span>
+
+      </div>
+      <div class="form-group">
+        <h5>Category</h5>
+        <select class="form-control" formControlName="gameCategory" name="category">
+          <option value="Action">Action</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Arcades">Arcades</option>
+          <option value="Card">Card</option>
+          <option value="Casual">Casual</option>
+          <option value="Family">Family</option>
+          <option value="Puzzle">Puzzle</option>
+          <option value="Racing">Racing</option>
+          <option value="Sports">Sports</option>
+          <option value="Trivia & Quiz">Trivia & Quiz</option>
+        </select>
+      </div>
+
+      <div class="form-group" >
+        <h5>Pricing</h5><br>
+
+        <input type="number" formControlName="gamePrice"class="form-control" value="{{gameData['gamePrice']}}" placeholder="0 or more" required>
+
+        <span class="form-text text-muted" *ngIf="!gameForm.get('gamePrice').valid && gameForm.get('gamePrice').touched">Max Price is 499</span>
+      </div>
+      <div class="form-group">
+        <h5 for="exampleFormControlTextarea3">Details</h5>
+        <textarea class="form-control" formControlName="gameDetails" id="exampleFormControlTextarea3" rows="7">
+      </textarea>
+
+        <span class="form-text text-muted" *ngIf="!gameForm.get('gameDetails').valid && gameForm.get('gameDetails').touched">Description Max Length</span>
+
+      </div>
+      <div class="form-group" >
+        <img [src]="gameService.url" [hidden]="true" #image height="200"> <br/>
+        <input type="file" style="display:none" #image accept="image/jpeg, image/jpeg, image/png,image/gif" formControlName="gameCoverImage"  (change)="gameService.upload($event)" value="Cover Image">
+        <button class="btn btn-primary" (click)="image.click()"
+                [disabled]="!(gameForm.get('gameTitle').valid && gameForm.get('gameDetails').valid && gameForm.get('gamePrice').valid)">Upload Image</button>
+      </div>
+      <div class="form-group">
+        <label>Upload Video</label><br>
+
+        <input type="file" style="display: none" #videoUpload accept="video/mp4" formControlName="gameVideoUpload" (change)="gameService.uploadVideo($event)">
+        <button type="button" (click)="videoUpload.click()"  class="btn-primary">Upload</button><br>
+        <div>
+          <label>Progress</label><br>
+          <progress max="100" [value]="(gameService.uploadProgressVideo | async)"></progress>
+          <section class="control-bar">
+            <button class="btn-outline-secondary" (click)="gameService.task.pause()">Pause</button><span></span>
+            <button class="btn-success" (click)="gameService.task.resume()">Resume</button><span></span>
+            <button class="btn-danger" (click)="gameService.task.cancel()">Cancel</button>
+          </section></div>
+      </div>
+      <div class="form-group">
+        <label>Upload</label><br>
+
+        <input type="file" style="display: none" #file accept="application/zip" formControlName="gameFileUpload" (change)="gameService.uploadGame($event)">
+        <button type="button" (click)="file.click()"  class="btn-primary">Upload</button><br>
+        <div>
+          <label>Progress</label><br>
+          <progress max="100"  [value]="(gameService.uploadProgressFile | async)"></progress>
+          <section class="control-bar">
+            <button class="btn-outline-secondary" (click)="gameService.task.pause()">Pause</button><span></span>
+            <button class="btn-success" (click)="gameService.task.resume()">Resume</button><span></span>
+            <button class="btn-danger" (click)="gameService.task.cancel()">Cancel</button>
+          </section></div>
+        <div class="mt-2">
+          <button type="submit" (click)="gameService.editGame(gameForm.value,gameId)" routerLink=""  [disabled]="!gameForm.valid" class="btn-primary">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+

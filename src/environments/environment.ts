@@ -12,9 +12,16 @@ export const environment = {
     storageBucket: 'sellyourgame-e9b90.appspot.com',
     messagingSenderId: '353473290780',
     appId: '1:353473290780:web:fd32d5b3bc97097f'
-  }
+  },
+    algolia: {
+      appId: 'WFAMNGS1G1',
+      apiKey: 'c826e1f0ff679ea02b0d216cb8e7595d',
+      indexName: 'gameIndex',
+      urlSync: false
+    }
 }
 ;
+
 
 /*
  * For easier debugging in development mode, you can import the following file

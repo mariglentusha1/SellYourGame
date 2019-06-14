@@ -1,23 +1,76 @@
 
-
 <div class="container mTop backGround">
-  <div class="row">
-    <div class="col-lg-3 d-flex align-items-stretch mb-3" *ngFor="let game of (gameService.game$ | async); let i=index;">
+  <h2 class="text-info "> Latest Games<button class="btn btn-success ml-2" (click)="gameService.getNavigation('/games', 'new')">See all...</button>
+  </h2>
+    <div class="row">
+    <div class="col-lg-3 d-flex align-items-stretch mb-3"
+         *ngFor="let game of gameService.game$ | async ">
+
       <div class="card text-center cardBackground">
         <div class="card-body">
-         <img src="{{game.gameCoverImage}}" class="img-fluid">
+          <a routerLink="/product/details/{{game.gameId}}"> <img src="{{game?.gameCoverImage}}" class="img-fluid"></a>
           <div class="card-title">
-            <h4>{{game.gameTitle}}</h4>
+            <a   class="text-dark" routerLink="/product/details/{{game.gameId}}"><h3>{{game?.gameTitle | uppercase}}</h3></a>
           </div>
-          <button class="btn-success" (click)="gameService.getNavigation('product/details', game.gameTitle)">See Game</button><br>
-          <div class="card-text">
-        Price: {{game.gamePrice}}$
-          </div>
+
+          <button [disabled]="true" class="btn btn-dark">{{game.gamePrice}}$</button>
+
         </div>
       </div>
+
     </div>
   </div>
-</div>
 
+  </div>
+
+  <div class="container mTop backGround">
+    <h2 class="text-info mr-2">Recommended for you<button class="btn btn-success ml-2" (click)="gameService.getNavigation('/games', 'old')">See all...</button>
+    </h2>
+    <div class="row">
+      <div class="col-lg-3 d-flex align-items-stretch mb-3"
+           *ngFor="let game of gameService.oldGame$ | async ">
+
+        <div class="card text-center cardBackground">
+          <div class="card-body">
+            <a routerLink="/product/details/{{game.gameId}}"> <img src="{{game?.gameCoverImage}}" class="img-fluid"></a>
+            <div class="card-title">
+              <a class="text-dark" routerLink="/product/details/{{game.gameId}}"><h3>{{game?.gameTitle | uppercase}}</h3></a>
+            </div>
+            <button [disabled]="true" class="btn btn-dark">{{game.gamePrice}}$</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+<div class="container mTop backGround">
+  <h2 class="text-info mr-2">Top Games<button class="btn btn-success ml-2" (click)="gameService.getNavigation('/games', 'old')">See all...</button>
+  </h2>
+  <div class="row">
+    <div class="col-lg-3 d-flex align-items-stretch mb-3"
+         *ngFor="let game of gameService.oldGame$ | async ">
+
+      <div class="card text-center cardBackground">
+        <div class="card-body">
+          <a routerLink="/product/details/{{game.gameId}}"> <img src="{{game?.gameCoverImage}}" class="img-fluid"></a>
+          <div class="card-title">
+            <a class="text-dark" routerLink="/product/details/{{game.gameId}}"><h3>{{game?.gameTitle | uppercase}}</h3></a>
+          </div>
+          <button [disabled]="true" class="btn btn-dark">{{game.gamePrice}}$</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+<div class="row">
+
+</div>
+  </div>
+</footer>
 
 

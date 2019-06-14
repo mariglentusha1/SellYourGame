@@ -10,8 +10,8 @@
     <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <h5>Title</h5>
-        <input type="text" #gameTitle formControlName="gameTitle" class="form-control" autofocus="" required>
-        <span class="form-text text-muted" *ngIf="!gameForm.get('gameTitle').valid && gameForm.get('gameTitle').touched">Title is required</span>
+        <input type="text" #gameTitle formControlName="gameTitle" class="form-control" pattern="[a-z0-9]+" autofocus="" required>
+        <span class="form-text text-muted" *ngIf="!gameForm.get('gameTitle').valid && gameForm.get('gameTitle').touched">Title is required(lowercase)</span>
 
       </div>
       <div class="form-group">
@@ -47,9 +47,23 @@
       </div>
       <div class="form-group" >
         <img [src]="gameService.url" height="200"> <br/>
-        <input type="file" style="display:none" #image accept="image/jpeg, image/jpeg, image/png" formControlName="gameCoverImage"  (change)="gameService.upload($event)" value="Cover Image">
+        <input type="file" style="display:none" #image accept="image/jpeg, image/jpeg, image/png ,image/gif" formControlName="gameCoverImage"  (change)="gameService.upload($event)" value="Cover Image">
       <button class="btn btn-primary" (click)="image.click()"
               [disabled]="!(gameForm.get('gameTitle').valid && gameForm.get('gameDetails').valid && gameForm.get('gamePrice').valid)">Upload Image</button>
+      </div>
+      <div class="form-group">
+        <label>Upload Video</label><br>
+
+        <input type="file" style="display: none" #videoUpload accept="video/mp4" formControlName="gameVideoUpload" (change)="gameService.uploadVideo($event)">
+        <button type="button" (click)="videoUpload.click()"  class="btn-primary">Upload</button><br>
+        <div>
+          <label>Progress</label><br>
+          <progress max="100" [value]="(gameService.uploadProgressVideo | async)"></progress>
+          <section class="control-bar">
+            <button class="btn-outline-secondary" (click)="gameService.task.pause()">Pause</button><span></span>
+            <button class="btn-success" (click)="gameService.task.resume()">Resume</button><span></span>
+            <button class="btn-danger" (click)="gameService.task.cancel()">Cancel</button>
+          </section></div>
       </div>
       <div class="form-group">
         <label>Upload</label><br>
@@ -58,14 +72,14 @@
         <button type="button" (click)="file.click()"  class="btn-primary">Upload</button><br>
        <div>
          <label>Progress</label><br>
-        <progress max="100" [value]="(gameService.uploadProgress | async)"></progress>
+        <progress max="100"  [value]="(gameService.uploadProgressFile | async)"></progress>
         <section class="control-bar">
           <button class="btn-outline-secondary" (click)="gameService.task.pause()">Pause</button><span></span>
           <button class="btn-success" (click)="gameService.task.resume()">Resume</button><span></span>
           <button class="btn-danger" (click)="gameService.task.cancel()">Cancel</button>
         </section></div>
         <div class="mt-2">
-        <button type="button" (click)="onSubmit1(gameForm.value)" routerLink="" [disabled]="!gameForm.valid" class="btn-primary">Save</button>
+        <button type="submit" (click)="onSubmit1(gameForm.value)" routerLink="" [disabled]="!gameForm.valid" class="btn-primary">Save</button>
       </div>
       </div>
     </form>

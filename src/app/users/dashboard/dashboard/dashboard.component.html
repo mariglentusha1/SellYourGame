@@ -2,18 +2,19 @@
 
   <div class="container">
 <div class="form-group">
-  <button  type="button" class="btn btn-primary" routerLink="./new">Create New Game</button>
+  <button  type="button" class="btn btn-primary" routerLink="/product/new">Create New Game</button>
 </div>
     <div class="text-center text-danger"><h3>My Games</h3></div>
     <div *ngFor="let game of gameService.game$ | async">
       <div *ngIf="game.user===authService.getCurrentUser()">
 
   <div class="list-group">
-      <h1><img src="{{game.gameCoverImage}}">{{game.gameTitle | uppercase}}
-        <button type="button" class="btn btn-primary" (click)="gameService.getNavigation('product/details',game.gameTitle)">View</button>
-        <button type="button" class="btn btn-danger" (click)="deleteGame(game.$gameId)">Delete</button>
-        <button type="button" class="btn btn-danger" (click)="gameService.editGame(game.$gameId)">Update</button>
-      </h1>
+      <ul class="list-group-item"><img class="img-thumbnail" src="{{game.gameCoverImage}}">{{game.gameTitle | uppercase}}
+        <button type="button" class="btn btn-danger float-right mt-4 ml-2" (click)="deleteGame(game.gameId)">Delete</button>
+        <button type="button" class="btn btn-primary float-right mt-4 ml-2" (click)="gameService.getNavigation('product/edit',game.gameId)">Edit</button>
+        <button type="button" class="btn btn-success float-right mt-4" (click)="gameService.getNavigation('product/details',game.gameId)">View</button>
+       <!--<button type="button" class="btn btn-danger" (click)="gameService.editGame(game.$gameId)">Update</button>-->
+      </ul>
   </div>
 
 </div>

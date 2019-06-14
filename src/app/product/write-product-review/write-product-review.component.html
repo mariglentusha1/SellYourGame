@@ -1,20 +1,51 @@
-<form class="offset-1" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+
+<div class=" b-cmnt-container color">
+<form  [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+<div class="offset-1">
   <div *ngIf="!authService.isLoggedIn;else elseComment">
     <span>Sign in to comment</span><br>
-    <button class="btn btn-success" routerLink="/users/sign-in" >
+    <button class="btn btn-success" routerLink="/users/sign-in">
       Sign In
     </button>
   </div>
-  <ng-template #elseComment>
-            <textarea formControlName="comment" id="exampleFormControlTextarea3" class="col-3">
+  <ng-template  #elseComment>
+            <textarea  formControlName="comment" id="exampleFormControlTextarea3" placeholder="Comment..." class="col-7 pb-cmnt-textarea">
       </textarea><br>
 
 
-    <button type="button" (click)="comment(commentForm.value)" class="btn-primary">Comment</button>
+    <button type="button" (click)="comment(commentForm.value)" class="btn btn-primary">Comment</button>
   </ng-template>
-</form>
-<h1 class="offset-1">Comments:</h1>
-<div *ngFor="let comments of commentData">
 
-  <p class="offset-1">{{comments['userName']}}: {{comments['comment']}}</p>
+</div>
+
+<div class="container">
+  <h2 class="text-center">Comments</h2>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row"  *ngFor="let comments of commentData">
+        <div class="col-md-2">
+          <img src="{{comments['photoUser']}}" class="img img-rounded img-circle rounded-circle img-fluid"/>
+        </div>
+        <div class="col-md-10">
+          <h4>
+            <p class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{comments['userName']}}</strong></p>
+            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+          </h4>
+          <div class="clearfix"></div>
+          <p>{{comments['comment']}}</p>
+          <div *ngIf="authService.isLoggedIn && comments.userId===authService.getCurrentUser()">
+          <button class="float-right btn btn-outline-primary ml-2" (click)="deleteComment(comments['commentId'])"> <i class="fa fa-reply"></i> Delete</button>
+          <button class="float-right btn btn-outline-primary ml-2" (click)="editComment(commentForm.value,comments['commentId'])"> <i class="fa fa-reply"></i> Edit</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
 </div>

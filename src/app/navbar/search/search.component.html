@@ -2,15 +2,14 @@
 <div class="container mTop backGround">
   <div class="row">
     <div class="col-lg-3 d-flex align-items-stretch mb-3"
-         *ngFor="let game of gameData  | paginate:{ itemsPerPage: 16, currentPage: p  }">
+         *ngFor="let game of game$ | async | paginate:{ itemsPerPage: 8, currentPage: p  }">
 
       <div class="card text-center cardBackground">
         <div class="card-body">
           <a routerLink="/product/details/{{game.gameId}}"> <img src="{{game?.gameCoverImage}}" class="img-fluid"></a>
           <div class="card-title">
-            <a   class="text-dark" routerLink="/product/details/{{game.gameId}}"><h3>{{game?.gameTitle | uppercase}}</h3></a>
+            <a class="text-dark" routerLink="/product/details/{{game.gameId}}"><h3>{{game?.gameTitle | uppercase}}</h3></a>
           </div>
-
           <button [disabled]="true" class="btn btn-dark">{{game.gamePrice}}$</button>
         </div>
       </div>
@@ -18,14 +17,14 @@
     </div>
 
   </div>
-  <div class="text-center mTop" *ngIf="(gameService.game$ | async)?.length  <= 0">
+  <div class="text-center mTop" *ngIf="(game$ | async)?.length  <= 0">
     <hr />
-    <h3 style="margin-top: 250px" class="text-danger">No results found !</h3>
+    <h2 style="margin-top: 250px" class="text-danger">No results found !</h2>
   </div>
   <pagination-controls class="my-pagination text-center " (pageChange)="p = $event"></pagination-controls>
 </div>
 
-<footer class="footer">
+<footer class="footer mTop">
   <div class="container">
     <div class="row">
 

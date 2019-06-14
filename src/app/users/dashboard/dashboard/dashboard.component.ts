@@ -27,10 +27,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.gameService.game$ = this.gameService.getAllGames();
-    this.gameId = this.route.snapshot.params['id'];
-    this.gameService.getById(this.gameId).subscribe(res => {
-      this.commentData = res;
-    });
+
   }
 
 }

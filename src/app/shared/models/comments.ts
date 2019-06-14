@@ -5,5 +5,6 @@ export interface Comments {
   commentId?: string;
   comment?: string;
   createdAt: Date;
+  photoUser?: string;
 
 }

@@ -1,10 +1,39 @@
 img{
    width: 250px;
-   height: 150px;
+   height: 200px;
  }
 .cardBackground{
-  background-color: #9F9C99;
+ background: white ;
 }
 cdk-virtual-scroll-viewport {
   height: 100vh;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+  background: blue;
+}
+
+.my-pagination /deep/ .ngx-pagination li {
+  background: dimgray;
+}
+.footer{
+  background-color: white;
+  color: #fff;
+  padding: 83px 0;
+}
+.card-body {
+  flex: 1 1 auto;
+  padding: 0.2rem;
+}
+h3, .h3 {
+  font-size: 1.2rem;
+  color: black;
+}
+.text-info {
+  color: black !important;
+}
+.btn-success {
+  color: #8e3838;
+  background-color: #dadada;
+  border-color: #a92424;
 }

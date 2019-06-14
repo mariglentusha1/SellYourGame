@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {GamesService} from '../../shared/services/games.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-product-review',
@@ -7,10 +6,10 @@ import {GamesService} from '../../shared/services/games.service';
   styleUrls: ['./product-review.component.scss']
 })
 export class ProductReviewComponent implements OnInit {
-
-  constructor(private gs: GamesService) { }
+  constructor() { }
 
   ngOnInit() {
+
   }
 
 }
