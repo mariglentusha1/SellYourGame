@@ -6,8 +6,6 @@
 </div>
     <div class="text-center text-danger"><h3>My Games</h3></div>
     <div *ngFor="let game of gameService.game$ | async">
-      <div *ngIf="game.user===authService.getCurrentUser()">
-
   <div class="list-group">
       <ul class="list-group-item"><img class="img-thumbnail" src="{{game.gameCoverImage}}">{{game.gameTitle | uppercase}}
         <button type="button" class="btn btn-danger float-right mt-4 ml-2" (click)="deleteGame(game.gameId)">Delete</button>
@@ -18,6 +16,5 @@
   </div>
 
 </div>
-    </div>
   </div>
 </div>

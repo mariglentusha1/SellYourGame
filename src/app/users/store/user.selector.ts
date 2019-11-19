@@ -1,8 +1,12 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {State} from './game.reducer';
+import {State} from './user.reducer';
 
 
-export const getGamesState = createFeatureSelector<State>('games');
+export const getGamesState = createFeatureSelector<State>('user');
 
-export const getAllGames =  createSelector(getGamesState, (state: State) => state.data);
+export const getUser =  createSelector(getGamesState, (state: State) => state.data);
 
+
+export function getUserData() {
+  return createSelector( getGamesState, (state: State) => state.data);
+}

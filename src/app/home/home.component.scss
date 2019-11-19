@@ -3,7 +3,7 @@ img{
    height: 200px;
  }
 .cardBackground{
- background: white ;
+ background: #f0eceb;
 }
 cdk-virtual-scroll-viewport {
   height: 100vh;
@@ -17,8 +17,8 @@ cdk-virtual-scroll-viewport {
   background: dimgray;
 }
 .footer{
-  background-color: white;
-  color: #fff;
+  background-color: #cdc2c3;
+  color: #000000;
   padding: 83px 0;
 }
 .card-body {
@@ -36,4 +36,9 @@ h3, .h3 {
   color: #8e3838;
   background-color: #dadada;
   border-color: #a92424;
+}
+.btn-danger.disabled, .btn-danger:disabled {
+  color: #fff3f8;
+  background-color: #0a0a0a;
+  border-color: #f5e3f2;
 }

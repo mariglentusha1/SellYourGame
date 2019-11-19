@@ -34,6 +34,7 @@ import {NgAisModule} from 'angular-instantsearch';
 import {StoreModule} from '@ngrx/store';
 import {gameReducers} from './shared/store/reducers';
 import { SearchComponent } from './navbar/search/search.component';
+import { SidebarComponent } from './home/sidebar/sidebar.component';
 
 
 
@@ -43,7 +44,8 @@ import { SearchComponent } from './navbar/search/search.component';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    SidebarComponent
   ],
 
   imports: [

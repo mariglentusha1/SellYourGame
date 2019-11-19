@@ -34,8 +34,11 @@ export class ProductComponent implements OnInit, OnDestroy {
     switch (this.gameId) {
       case 'new':
         return this.db.collection('game', ref => ref.orderBy('createdAt', 'desc')).valueChanges();
-      case 'old':
+      case 'topgames':
+        return this.db.collection('game', ref => ref.orderBy('gameTitle', 'asc')).valueChanges();
+      case 'recommended':
         return this.db.collection('game', ref => ref.orderBy('createdAt', 'asc')).valueChanges();
+
     }
   }
   ngOnDestroy(): void {

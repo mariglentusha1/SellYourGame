@@ -1,48 +1,22 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {GamesService} from '../../shared/services/games.service';
-import {
-  AddGameError,
-  AddGameSuccess,
-  AddNewGame,
-  CREATE_GAME,
-  GET_GAMES,
-  GetAllGamesError,
-  GetAllGamesSuccess, UPLOAD_GAME, UploadGame
-} from './game.actions';
+import { GET_USER, GetUserErr, GetUserSucces
+} from './user.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
+import {AuthService} from '../../shared/services/auth.service';
 import {Observable} from 'rxjs';
 import {Action} from '@ngrx/store';
 
 @Injectable()
 
-export class GameEffects {
-  constructor(private action$: Actions, private gameService: GamesService) {
+export class UserEffects {
+  constructor(private action$: Actions, private authService: AuthService) {
   }
 
   @Effect()
-  createGame$ = this.action$.pipe(ofType(CREATE_GAME),
-    map((action: AddNewGame) => action.payload),
-    switchMap(newGame => this.gameService.createGame(newGame)),
-    map((response) => new AddGameSuccess(response)),
-    catchError((err) => [new AddGameError(err)]));
-
-
-  @Effect()
-  getAllGames$: Observable<Action> = this.action$.pipe(ofType(GET_GAMES),
-    switchMap(() => this.gameService.getAllGames()),
-    map((games) => new GetAllGamesSuccess(games),
-      catchError((error) => [new GetAllGamesError(error)]
-      )));
-
-  @Effect()
-  uploadGame$ = this.action$.pipe(
-    ofType(UPLOAD_GAME),
-    map((action: UploadGame) => action.payload),
-
-    // @ts-ignore
-    switchMap(res => this.gameService.uploadGame(res)),
-    map(p => new UploadGame(p)));
-
-
+  getUser$: Observable<Action> = this.action$.pipe(ofType(GET_USER),
+    switchMap(() => this.authService.getCurrentUser()),
+    map((user) => new GetUserSucces(user)),
+    catchError((error) => [new GetUserErr(error)]));
 }

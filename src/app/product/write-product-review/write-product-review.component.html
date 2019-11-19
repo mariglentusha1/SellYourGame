@@ -1,5 +1,5 @@
 
-<div class=" b-cmnt-container color">
+<div class=" b-cmnt-container color mb-4">
 <form  [formGroup]="commentForm" (ngSubmit)="onSubmit()">
 <div class="offset-1">
   <div *ngIf="!authService.isLoggedIn;else elseComment">
